@@ -1,0 +1,60 @@
+
+<p-toast></p-toast>
+
+
+<div class="bg-color">
+<app-header (searchStringEmitter)="getSearchString($event)" (sortingTypeEmitter)="getSortingType($event)"></app-header>
+
+
+<div *ngIf="listOfProfile " class="mt-2">
+        <div class="row mb-2">
+            <div class="col-sm-0 col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6">
+                <div *ngIf="listOfProfile"> 
+                    Total Results : <span>{{listOfProfile.length}}</span>
+                </div>
+            </div>
+            <div class="col-sm-0 col-lg-3"></div>
+        </div>
+        <div class="row" *ngFor="let profile of listOfProfile; let index = index">
+            <div class="col-sm-0 col-lg-3"></div>
+            <div class="col-lg-6 mb-2">
+                <p-card >     
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-3 img-postion">
+                            <img src={{profile.avatar_url}} class="rounded-circle w-50 h-50">
+                        </div>
+                        <div class="col-sm-6 col-lg-9">
+                            <div class="name-title">{{profile.login}}</div>
+                                <div>
+                                    Profile URL : <span>{{profile.html_url}}</span>
+                                </div>
+                                <div>
+                                    data one<br>data two
+                                    <span><button class="btn details-button float-right" (click)="openCurrentDetails(index,profile.login)">Details</button></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2" *ngIf="showDetails && index==selectedIndex">
+                                <div *ngIf="!repoDetails || (repoDetails && repoDetails.length==0)" class="pl-5">Sorry...no data avialable</div>
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr *ngFor="let repo of repoDetails">
+                                            <td class="p-l-9"></td>
+                                            <td >{{repo.name}}</td>
+                                            <td >{{repo.language ? repo.language : 'N/A'}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <!-- <div *ngIf="!showDetails && index==selectedIndex">Sorry...no data avialable</div> -->
+                    </p-card>
+                </div>
+                <div class="col-sm-0 col-lg-3"></div>
+            </div>
+{{selectedIndex}}
+            
+</div>
+
+</div>

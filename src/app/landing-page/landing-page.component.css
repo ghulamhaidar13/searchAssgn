@@ -1,0 +1,18 @@
+.bg-color{
+    background-color: lightgray;
+}
+.img-postion{
+    vertical-align: middle;
+    text-align: center;
+    display: table;
+}
+.name-title{
+    font-size: 25px;
+}
+.details-button{
+    color: blue;
+    border-color: blue;
+}
+.p-l-9{
+    padding-left: 18% !important;
+}
